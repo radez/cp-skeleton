@@ -17,9 +17,7 @@ class Admin(Base):
     def notifications(self):
         notifications = self.db.query(Notification).all()
 
-        return self.j2render(session=cherrypy.session,
-                             request=cherrypy.request,
-                             notifications=notifications)
+        return self.j2render(notifications=notifications)
 
     @cherrypy.expose
     @require(auth_role('admin'))
@@ -27,9 +25,7 @@ class Admin(Base):
     def codes(self):
         codes = self.db.query(Code).all()
 
-        return self.j2render(session=cherrypy.session,
-                             request=cherrypy.request,
-                             codes=codes)
+        return self.j2render(codes=codes)
 
 
 class WebService(Base):
@@ -46,5 +42,4 @@ class Root(Base):
     @cherrypy.expose
     @cherrypy.tools.template(template='index.html')
     def index(self):
-        return self.j2render(request=cherrypy.request,
-                             session=cherrypy.session)
+        return self.j2render()

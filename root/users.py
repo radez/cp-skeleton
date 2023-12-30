@@ -15,9 +15,7 @@ class AdminUsers(Base):
     @cherrypy.tools.template(template='admin_users.html')
     def index(self):
         users = self.db.query(User).all()
-        return self.j2render(session=cherrypy.session,
-                             request=cherrypy.request,
-                             users=users)
+        return self.j2render(users=users)
 
 
 class UsersWebService(Base):

@@ -144,9 +144,7 @@ class AuthController(Base):
     def get_loginform(self, username, msg="", from_page=cherrypy.request.script_name):
         username = html.escape(username, True)
         from_page = html.escape(from_page, True)
-        return self.j2render(session=None,
-                             request=cherrypy.request,
-                             from_page=from_page,
+        return self.j2render(from_page=from_page,
                              username=username,
                              do_login=True,
                              setmessage=msg).encode('utf-8')
@@ -236,9 +234,7 @@ class AuthController(Base):
                     msg = {'msg': 'Code has expired', 'css_class': 'alert-danger'}
             except NoResultFound:
                 msg = {'msg': 'Invalid code provided', 'css_class': 'alert-danger'}
-        return self.j2render(session=None,
-                             request=cherrypy.request,
-                             username=username,
+        return self.j2render(username=username,
                              code=code,
                              sent=sent,
                              do_forgot=True,
@@ -267,9 +263,7 @@ class AuthController(Base):
                     msg = {'msg': 'Code has expired', 'css_class': 'alert-danger'}
             except NoResultFound:
                 msg = {'msg': 'Invalid code provided', 'css_class': 'alert-danger'}
-        return self.j2render(session=None,
-                             request=cherrypy.request,
-                             username=username,
+        return self.j2render(username=username,
                              code=code,
                              sent=sent,
                              do_forgot=True,
