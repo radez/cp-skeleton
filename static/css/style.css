@@ -1,0 +1,129 @@
+a {
+    color: rgb(0, 0, 0);
+}
+.title {
+    font-weight: bold;
+}
+.title-line {
+    clear:none;
+    border-style:solid;
+    border-width:0px 0px 2px 0px;
+    border-color: #002856;
+}
+table {
+    border-collapse: collapse;
+}
+th {
+    text-align:left;
+}
+span {
+    display: inline-block;
+}
+.submit {
+    background-color: #FFFFFF; /* Green */
+    border: none;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    font-size: 15px;
+}
+.top { margin-bottom: 3px; }
+.bottom { margin-top: 3px; }
+.topandbottom { margin-top: 3px; margin-bottom: 3px; }
+.gray { background-color: #EEEEEE;  margin: 0px;}
+.yellow { background-color: #eab676;  margin: 0px;}
+.lightred { background-color: #ffcccb;  margin: 0px;}
+
+.login {
+    width: 250px;
+    margin: auto auto;
+    text-align:center;
+}
+
+.forgot {
+    width: 1000px;
+    margin: auto auto;
+    text-align:center;
+}
+
+.cf_logo {
+    float: left;
+    width: 250px;
+    margin: 10px auto 10px auto;
+    clear: both;
+    margin-bottom: -20px;
+}
+.menu-line {
+    clear:both;
+    border-style:solid;
+    border-width:2px 0px 0px 0px;
+    border-color: #002856;
+}
+.odd {
+   background: #0D1424;
+}
+
+/* The alert message box */
+.alertbox {
+  position: fixed;
+  z-index: 999;
+  text-align: center;
+  margin: 0 auto; /* Will not center vertically and won't work in IE6/7. */
+  left: 0;
+  right: 0;
+  padding-top:7px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: gray;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+.error {
+   color: #ff0000;
+   border-color: #ff0000;
+}
+
+form input[type=textbox],.rfiInput {
+   width: 50%;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  padding: 2px;
+  font-size: .75em;
+  text-align: center;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  width:97%;
+}
+.footer a { font: inherit; }
+
+.topnav {
+    background-color: #002856;
+    width: 100%;
+}
+
+#menuDropdown {
+    margin-top: 7px;
+    left: -187px;
+    padding: 10px;
+    width: max-content;
+}
+#adminmenuDropdown {
+    margin-top: 7px;
+    padding: 10px;
+    left: -425px;
+    width: 450px;
+}

@@ -1,0 +1,32 @@
+# Database url SQLAlchemy uses to connect to the db
+[db]
+url=sqlite:///PROJECTNAME.db  # sqlite db in project dir
+#url=sqlite:///path/to/project/PROJECTNAME.db
+#url=mysql://dbuser:password@localhost/PROJECTNAME
+
+# These setting are the smtp server information
+# used to send email notifications.
+[smtp]
+smtp_ssl_server=server
+smtp_port=port
+smtp_user=username
+smtp_password=password
+
+[notifications]
+# The "from" name email notifcations come from.
+# It ?appears? the email is appendend in angle brackets
+# automagically?
+sender="PROJECTNAME No Reply"
+
+# The domain of your server used to build
+# urls for end user actions to return them to the site.
+server=http://example.com
+
+# paths to storage locations for runtime
+[paths]
+# example: '/PREFIX/' to use http://host.name/PREFIX/
+#          trailing slash required
+url_prefix=/
+# Readable directory that contains jinja templates
+templates=templates/  # relative ref to project dir
+#templates=/var/www/PROJECTNAME/templates/

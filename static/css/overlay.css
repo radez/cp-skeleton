@@ -1,0 +1,52 @@
+#overlay {
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.inner-overlay {
+  /*Hides pop-up when there is no "active" class*/
+  visibility: hidden;
+  background: #ffffff;
+  padding: 30px;
+  border: 3px solid #666666;
+  z-index: 2;
+  margin: 200px;
+  text-align: left;
+}
+
+.overlay-content {
+  margin: 25px 75px;
+}
+
+#overlay.active {
+  visibility: visible;
+}       
+        
+.inner-overlay.active {
+  /*displays pop-up when "active" class is present*/
+  visibility: visible;
+}           
+        
+.overlay-content {
+  /*Hides pop-up content when there is no "active" class */
+  visibility: hidden;
+}           
+                
+.overlay-content.active {
+  /*Shows pop-up content when "active" class is present */
+  visibility: visible;
+}               
+.overlay-icon {
+  position: fixed;
+  bottom: 0;        
+  left: 0;              
+  margin: 15px;     
+  height: 32px;         
+}                

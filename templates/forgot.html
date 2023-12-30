@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col">
+
+        <form method="POST" action="{{ request.script_name }}/auth/forgot/">
+            <p>To reset your password, enter your<br> email and you will be sent a reset code.<br></p>
+            <p>&nbsp;</p>
+            <span style="text-align:left;">
+                <span>Email: </span></br>
+                <input type="text" name="username" size="20">
+                <input type="submit" value="Send Code"><br>
+                <span style="width: 100px;">&nbsp;</span>
+                <p>&nbsp;</p>
+            </span>
+        </form>
+
+            </div>
+            <div class="col">
+
+        <form method="POST" action="{{ request.script_name }}/auth/forgot/">
+            {% if sent %}
+            <p>Enter the code sent to your email<br> to reset your password.</p>
+            {% else %}
+            <p>If you already have a reset code,<br> enter it here to reset your password.<br></p>
+            {% endif %}
+            <p>&nbsp;</p>
+            <span style="text-align:left;">
+                <span>Reset Code: </span><br>
+                <input type="text" name="code" size="37" value="{{ code }}"><br>
+            </span>
+                <p>&nbsp;</p>
+            <span style="text-align:right;">
+                <span>New Password: </span>
+                <input type="password" name="newpassword" size="20"><br>
+                <span>Verify Password: </span>
+                <input type="password" name="verifypassword" size="20"><br>
+                <p>&nbsp;</p>
+                <input type="submit" value="Reset">
+            </span>
+        </form>
+
+            </div>
+        </div>
+
+        &nbsp;<p>&nbsp;
+        <p style='text-align:center;'>
+        <a href="{{ request.script_name }}/auth/login/">Login</a></p>
+
+{% endblock %}

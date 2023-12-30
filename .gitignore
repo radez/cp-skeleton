@@ -1,0 +1,6 @@
+*.swp
+*.db
+*__pycache__*
+sessions
+PROJECTNAME.conf
+venv

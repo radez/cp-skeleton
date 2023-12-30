@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block head %}
+<script>
+  function msg(m, cls) {
+    set_message(m, css_class=cls);
+    // set_message({'msg': m, 'css_class': cls}
+  };
+</script>
+{% endblock %}
+
+{% block pagetitle %}My Dashboard{% endblock %}
+
+{% block help %}
+Here's your help
+{% endblock %}
+
+{% block content %}
+<button class="btn btn-outline-success" onclick="msg('this is success', 'alert-success')">success</button>
+<button class="btn btn-outline-warning" onclick="msg('this is warning', 'alert-warning')">warning</button>
+<button class="btn btn-outline-danger" onclick="msg('this is danger', 'alert-danger')">danger</button>
+{% endblock %}

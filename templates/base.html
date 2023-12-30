@@ -1,0 +1,122 @@
+<html>{% set page_title %}{% block pagetitle %}&nbsp;{% endblock %}{% endset %}
+    <head>
+        <link rel="icon" href="{{ request.script_name }}/img/favicon.png" sizes="96x96" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <link href="{{ request.script_name }}/css/style.css" rel="stylesheet">
+        <link href="{{ request.script_name }}/css/blink.css" rel="stylesheet">
+        <script src="{{ request.script_name }}/js/main.js"></script>
+        <link href="{{ request.script_name }}/css/overlay.css" rel="stylesheet">
+        <script src="{{ request.script_name }}/js/overlay.js"></script>
+        <script> var request_script_name = '{{ request.script_name }}'; </script>
+        <title>PROJECTNAME - {{ page_title }}</title>
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <div id="message" class="mt-3 d-flex flex-column container alertbox">{{ msg }}</div>
+        {% if not do_login and not do_forgot %}
+        <div class="container-fluid text-white topnav" style="height: 32px;">&nbsp;</div>
+        <div class="container-fluid text-white topnav clearfix text-bottom">
+            <div class="m-3 float-start h1">
+                PROJECTNAME
+            </div>
+            <div class="float-end">
+                {% if session and session.user.admin %}
+                    <form id="suForm" method="POST" class="m-0" action="{{ request.script_name }}/auth/su/?from_page={{ request.script_name }}">
+                        <input id="suToUser" name="suToUser" placeholder="Switch User">
+                        <button type="submit"><img height="24" src="{{ request.script_name }}/img/icons8-synchronize-48.png"></button></form>
+                {% elif session and session.suUser %}<span class="fw-bold text-danger blink">{{ session.suUser.firstlast() }} <small>({{ session.suUser.email }})</small></span>
+                        <a href="{{ request.script_name }}/auth/su/?from_page={{ request.script_name }}"><img height="24" src="{{ request.script_name }}/img/icons8-synchronize-48.png"></a>
+                {% else %}
+                &nbsp;
+                {% endif %}
+            </div>
+            <div class="float-end mt-3" style="clear:right;width:300px;">
+                {% if session and 'user' in session %}
+                    <div class="row">
+                      <div class="col-10 text-end h4" style="font-size: 1.2em;">{{ session.user.firstname }} {{ session.user.lastname }}</div>
+                      <div class="dropdown col-1">
+                        <img height="24" src="{{ request.script_name }}/img/icons8-menu-48.png" class="dropdown-toggle" data-bs-toggle="dropdown">
+                        <div id="{% if session and session.user.admin %}admin{% endif %}menuDropdown" class="dropdown-menu shadow">
+                          <div class="row">
+                              {% if session and session.user.admin %}
+                              <div class="col">
+                                  <div class="title title-line text-black" width="100%">&nbsp; Admin</div>
+                                  <a class="dropdown-item" href="{{ request.script_name }}/admin/users/">Users</a>
+
+                                  <div class="title title-line text-black" width="100%" style="padding-top: 17px;">&nbsp; System</div>
+                                  <a class="dropdown-item" href="{{ request.script_name }}/admin/codes/">Codes</a>
+                                  <a class="dropdown-item" href="{{ request.script_name }}/admin/notifications/">Notifications</a>
+                              </div>
+                              {% endif %}
+                              <div class="col">
+                                  <div class="title title-line text-black" width="100%">&nbsp; Menu</div>
+                                  <a class="dropdown-item" href="{{ request.script_name }}/">My Dashboard</a>
+                                  <form id="logoutForm" method="POST" action="{{ request.script_name }}/auth/logout?from_page={{ request.script_name }}">
+                                    <a class="dropdown-item" name="logout" href="javascript:{}" onclick="$('#logoutForm').submit();">Logout</a>
+                                  </form>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% elif not do_login %}
+                <a href="{{ request.script_name }}/auth/login">Login</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="py-3 px-4 container-fluid clearfix">
+            <div class="row">
+                <div class="col h4"><b>{{ page_title }}</b></div>
+                <div class="col">&nbsp; &nbsp; &nbsp;</div>
+                <div class="col">
+                  <div class="float-end">
+                <img height="36" class="droplnk" src="{{ request.script_name }}/img/icons8-about-48.png" data-bs-toggle="offcanvas" data-bs-target="#help">
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="offcanvas offcanvas-end" id="help" style="overflow-y:scroll;">
+            <button type="button" class="m-2 btn-close float-end" data-bs-dismiss="offcanvas" style="position: fixed; right: 10px;"></button>
+            {% block help %}
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title">
+                <img src="{{ request.script_name }}/img/icons8-confused-48.png" style="margin-top: -7px;">
+                Uh oh.</h1>
+            </div>
+            <div class="offcanvas-body">
+                <p>Help is not available for this page.</p>
+            </div>
+            {% endblock %}
+        </div>
+        {% include "overlay.html" %}
+        {% endif %}
+
+        <div class="{% if do_login %}login{% elif do_forgot %}forgot{% else %}container{% endif %}">
+            {% if do_login or do_forgot %}
+            <!--img src="" class="login" alt=""-->
+
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+        <div class="row title-line text-start">
+            <div class="col h1">
+                PROJECTNAME
+            </div>
+        </div>
+            {% endif %}
+
+            {% block content %}{% endblock %}
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+        </div>
+        <div class="footer">
+            Icons by <a target="_blank" href="https://icons8.com">Icons8</a>
+        </div>
+
+        {% if setmessage %} <script> $(document).ready(function() { set_message({{ setmessage}}); });</script>{% endif %} 
+    </body>
+</html>
