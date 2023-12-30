@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="greybox">
+<table width="100%" cellpadding="7">
+<tr>
+   <th>ID</th>
+   <th>Type</th>
+   <th>Email</th>
+   <th>Stamp</th>
+   <th>Processed</th>
+</tr>
+{% for n10n in notifications %}
+<tr>
+   <td>{{ n10n.id }}</td>
+   <td>{{ n10n.type }}</td>
+   <td>{{ n10n.email }}</td>
+   <td>{{ n10n.stamp }}</td>
+   <td>{{ n10n.processed }}</td>
+</tr>
+<tr>
+   <td colspan=5>{{ n10n.meta }}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

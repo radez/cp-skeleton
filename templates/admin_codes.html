@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="greybox">
+<table width="100%" cellpadding="7">
+<tr>
+   <th>ID</th>
+   <th>Type</th>
+   <th>Email</th>
+   <th>Stamp</th>
+   <th>Processed</th>
+</tr>
+{% for code in codes %}
+<tr>
+   <td>{{ code.id }}</td>
+   <td>{{ code.type }}</td>
+   <td>{{ code.email }}</td>
+   <td>{{ code.stamp }}</td>
+   <td>{{ code.processed }}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+    <script>if (!document.location['pathname'].includes('/auth/login')) { location.href = '{{ request.script_name}}/auth/login/?from_page=' + document.location['pathname'];};</script>
+    <span style="width: 100%;">&nbsp;</span>
+    <span style="text-align:left;">
+    <form method="POST" action="{{ request.script_name}}/auth/login/">
+        <label for="username"><b>Email</b></label>
+        <input type="text" name="username" value="{{ username }}" size="25" />
+        <br />
+        <label for="password"><b>Password</b></label>
+        <input type="password" name="password" size="25" />
+        <br />
+        <input type="hidden" name="from_page" value="{{ from_page }}" />
+        <span style="width: 100%">&nbsp;</span>
+        <p style='text-align:center;'>
+        <input type="submit" value="Login" />
+        </p>
+        &nbsp;<p>&nbsp;
+        <p style='text-align:center;'>
+        <a href="{{ request.script_name }}/auth/forgot/">Forgot Password</a></p>
+    </form>
+    </span>
+    <span style="width: 300px;">&nbsp;</span>
+{% endblock %}

@@ -1,0 +1,5 @@
+cherrypy
+cp_sqlalchemy
+passlib
+jinja2
+alembic

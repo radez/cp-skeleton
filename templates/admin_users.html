@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block pagetitle %}Manage Users{% endblock %}
+{% block content %}
+<div id="header" class="row title-line">
+   <div class="col-1">&nbsp;</div>
+   <div class="col-3">Name</div>
+   <div class="col-3">Email</div>
+   <div class="col-3">Collection Admin</div>
+   <div class="col-2">&nbsp;</div>
+</div>
+{% for user in users %}
+
+<div class="row">
+   <div class="col-1"><img src="{{ request.script_name }}/img/icons8-customer-48.png" width="16"></div>
+   <div class="col-3">{{ user.firstlast }}{% if user.admin %} *{% endif %}</div>
+   <div class="col-3">{{ user.email }}</div>
+   <div class="col-3">{% if user.admin %}<img id="admin_{{ user.id }}" src="{{ request.script_name }}/img/icons8-checked-checkbox-96.png" height="24">{% endif %}
+                      {% if col != None %}<a href="#" onclick="coladmin(event, '{{ user.id }}');"><img src="{{ request.script_name }}/img/icons8-change-user-48.png" height="24"></a>{% endif %}</div>
+   <div class="col-2 text-end"><img src="{{ request.script_name }}/img/icons8-delete-96.png" height="24" class="droplnk" onclick="revoke(event, '{{ user.id }}');"></div>
+</div>
+{% endfor %}
+</table>
+{% endblock %}

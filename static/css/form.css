@@ -1,0 +1,56 @@
+/* =======================================
+
+		Main Stylesheet
+		
+		Building on Twitter Bootstrap
+		http://twitter.github.com/bootstrap/
+		
+========================================== */
+
+@import url('../assets/css/bootstrap.min.css');
+@import url('../assets/css/bootstrap-responsive.min.css');
+
+/* New styles below */
+
+		label.valid {
+		  width: 24px;
+		  height: 24px;
+		  background: url(../assets/img/valid.png) center center no-repeat;
+		  display: inline-block;
+		  text-indent: -9999px;
+		}
+		label.error {
+			font-weight: bold;
+			color: red;
+			padding: 2px 8px;
+			margin-top: 2px;
+		}
+		
+		legend {
+			margin-bottom:15px;	
+		}
+		
+		textarea:focus, input:focus {
+			border: 1px solid #09C;
+		}
+
+		.table tbody tr:hover td, .table tbody tr:hover th {
+ 		    background-color: #fff;
+		}
+		
+		a.btn, a.btn:link, a.btn:visited {
+			  color: #000;
+		}
+		
+		a.btn.btn-primary, a.btn.btn-primary:link, a.btn.btn-primary:visited {
+			  color: #fff;
+		}
+		
+		#conferences .conference .btn {
+				float:right;
+		}
+		
+		.textarea-large {
+		 	height:100px; 
+			width:390px;
+		}

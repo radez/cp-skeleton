@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <link href="{{ server }}/css/style.css" rel="stylesheet">
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body style="background: none;">
+        <div class="_login">
+            <span class='header'>
+                <div class='logo'>
+                    <a href="{{ server }}{{ url_prefix }}">
+                    <img src="{{ server }}{{ url_prefix }}/img/icons8-save-96.png" alt="PROJECTNAME" width="48"> <h1>PROJECTNAME</h1>
+                    </a>
+
+                </div>
+            </span>
+            {% if not layout %}<div class="menu-line"> &nbsp;</div>{% endif %}
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>

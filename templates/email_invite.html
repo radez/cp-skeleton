@@ -1,0 +1,12 @@
+{% extends "email_base.html" %}
+{% block content %}
+{% if code %}
+<p>Your password can be reset by clicking the reset link provided below or by providing the following code at <a href="{{ server }}{{ url_prefix }}auth/forgot/">{{ server }}{{ url_prefix }}auth/forgot/</a></p>
+&nbsp;
+<p>PROJECTNAME Password Reset Code: {{ code }}<br>
+<a href="{{ server }}{{ url_prefix }}auth/forgot/?code={{ code }}">Click Here to Reset</a></p>
+<p>This code will expire in 10 minutes.</p>
+{% else %}
+<p>Your email was not associated with an account.</p>
+{% endif %}
+{% endblock %}
