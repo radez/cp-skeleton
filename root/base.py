@@ -7,6 +7,8 @@ class Base(object):
     def db(self):
         return cherrypy.request.db
 
-    @property
-    def j2render(self):
-        return cherrypy.request.j2render
+    def j2render(self, **kwargs):
+        return cherrypy.request.j2render(
+            session = cherrypy.session,
+            request = cherrypy.request,
+            **kwargs)

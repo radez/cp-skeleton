@@ -23,7 +23,7 @@
                 PROJECTNAME
             </div>
             <div class="float-end">
-                {% if session and session.user.admin %}
+                {% if session and 'user' in session and session.user.admin %}
                     <form id="suForm" method="POST" class="m-0" action="{{ request.script_name }}/auth/su/?from_page={{ request.script_name }}">
                         <input id="suToUser" name="suToUser" placeholder="Switch User">
                         <button type="submit"><img height="24" src="{{ request.script_name }}/img/icons8-synchronize-48.png"></button></form>
