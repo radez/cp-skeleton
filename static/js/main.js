@@ -29,13 +29,34 @@ function set_message(data, css_class='alert-success') {
     setTimeout(function() { msgDiv.remove(); }, 5000);
 }
 
+function ajaxErrorHandler(jqXHR, exception) {
+  var msg = '';
+  if (jqXHR.status === 0) {
+      msg = 'Not connect.\n Verify Network.';
+  } else if (jqXHR.status == 404) {
+      msg = 'Requested page not found. [404]';
+  } else if (jqXHR.status == 500) {
+      msg = 'Internal Server Error [500].';
+  } else if (exception === 'parsererror') {
+      msg = 'Requested JSON parse failed.';
+  } else if (exception === 'timeout') {
+      msg = 'Time out error.';
+  } else if (exception === 'abort') {
+      msg = 'Ajax request aborted.';
+  } else {
+      msg = 'Uncaught Error.\n' + jqXHR.responseText;
+  }
+  set_message(msg, css_class='alert-danger');
+}
+
 function loadResults(url, target) {
   var div = document.getElementById(target);
   $.ajax({
     url: url,
     success: function(data) {
       div.innerHTML = data;
-    }
+    },
+    error: ajaxErrorHandler
   });
    
 }
