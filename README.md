@@ -98,6 +98,3 @@ venv/bin/alembic revision --autogenerate -m 'Initial Database'
 - using tox to unit test
 - installing production nginx/uwsgi deployment
 - git hooks for prod deployment
-
-# Code TODO
-- Variableize PROJECTNAME so it's not in so many places

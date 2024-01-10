@@ -3,6 +3,7 @@ import sys
 import cherrypy
 import argparse
 
+import constants as c
 from config import parse_config, setup_server
 
 # force python 3
@@ -11,7 +12,7 @@ if sys.version_info[0] <= 3 and sys.version_info[1] < 6:
 
 # Setup Arg Parse
 parser = argparse.ArgumentParser(description='CherryPy Server')
-parser.add_argument('-c', '--config', default='PROJECTNAME.conf')
+parser.add_argument('-c', '--config', default=f'{c.PROJNAME}.conf')
 parser.add_argument('--host', default='127.0.0.1')
 parser.add_argument('-p', '--port', default=9000, type=int)
 parser.add_argument('--ssl', action='store_true')

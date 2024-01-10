@@ -13,7 +13,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import func
 
-config = parse_config('PROJECTNAME.conf')
+config = parse_config(f'{c.PROJNAME}.conf')
 CFG = config['smtp']
 SENDER = config['notifications']['sender']
 SERVER = config['notifications']['server']
@@ -49,7 +49,7 @@ def send_html_email(subject, body, recipient):
 
 
 subjects = {
-    c.FORGOT: "PROJECTNAME: Forgotten Password Code",
+    c.FORGOT: f"{c.PROJTITLE}: Forgotten Password Code",
 }
 
 

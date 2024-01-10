@@ -1,3 +1,5 @@
+PROJNAME = 'PROJECTNAME'
+PROJTITLE = 'Project Name'
 CODE = 'code'
 EMAIL = 'email'
 FORGOT = 'forgot'
