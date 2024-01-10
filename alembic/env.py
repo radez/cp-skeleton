@@ -1,3 +1,4 @@
+import constants as c
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
@@ -20,7 +21,7 @@ config = context.config
 
 # Pull in our config file to get the database
 # connection url
-vconfig = parse_config('PROJECTNAME.conf')
+vconfig = parse_config(f'{c.PROJNAME}.conf')
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

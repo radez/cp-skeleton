@@ -2,6 +2,7 @@
 # python -i db_test.py
 # this will open python with the SQLAlchemy
 # loaded into the `session` variable
+import constants as c
 from model.collection import Collection, ColUserAssociation # noqa F401
 from model.user import User # noqa F401
 
@@ -9,7 +10,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from config import parse_config
 
-cfg = parse_config('PROJECTNAME.conf')
+cfg = parse_config(f'{c.PROJNAME}.conf')
 
 engine = create_engine(cfg['db']['url'], echo=True)
 session = sessionmaker(bind=engine)()
