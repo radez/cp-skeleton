@@ -105,4 +105,5 @@ def setup_server(verbose=False):
     )
     sqlalchemy_plugin.subscribe()
     # Uncomment if you'd like database tables to be autocreated
-    # sqlalchemy_plugin.create()
+    if 'sqlite' in cherrypy.config['db']['url']:
+        sqlalchemy_plugin.create()
