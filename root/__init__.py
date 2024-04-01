@@ -43,3 +43,8 @@ class Root(Base):
     @cherrypy.tools.template(template='index.html')
     def index(self):
         return self.j2render()
+
+    @cherrypy.expose
+    @cherrypy.tools.template(template='modal_example.html')
+    def modal(self):
+        return self.j2render()
